@@ -1,11 +1,11 @@
 {
-    "token": "",
-    "guildId": "",
-    "clientId": "",
-    "staffRoleId": "",
-    "slotRules": "",
-    "ownerId": "",
-    "categoryId": "",
-    "embedcolour": "",
-    "logsChannelId": ""
+    "token": "MTI5ODgyNzY4ODAzOTAyNjcyOA.GJvAKX.ZPLDedeb9jHFCQSn8CYohNFBiujmICW1h0Rens",
+    "guildId": "1303532100137521194",
+    "clientId": "1304589486105034852",
+    "staffRoleId": "1304561231369080872",
+    "slotRules": "test",
+    "ownerId": "1281968130402553909",
+    "categoryId": "1304558761725399162",
+    "embedcolour": "red",
+    "logsChannelId": "1304731085988691988"
 }
