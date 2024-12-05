@@ -1,11 +1,11 @@
 {
-    "token": "MTI5ODgyNzY4ODAzOTAyNjcyOA.GJvAKX.ZPLDedeb9jHFCQSn8CYohNFBiujmICW1h0Rens",
+    "token": "your_bot_token",
     "guildId": "1303532100137521194",
-    "clientId": "1304589486105034852",
+    "clientId": "1298827688039026728",
     "staffRoleId": "1304561231369080872",
-    "slotRules": "test",
+    "slotRules": "1. TOS \n When selling in your slot make sure to follow tos so we don’t get banned. \n 2. Scamming \n If you do scam your slot will be revoked with no refund also a ban. \n 3. Nsfw \n No nsfw is allowed if there is nsfw in your slot your slot will be revoked.\n 4. Server advertising \n You are allowed to advertise your server and sell products but it cannot be nsfw related.\n 5. Selling your slot \n You are not allowed to sell your slot for no reason if we found out you are selling your slot it will be revoked and you’ll be banned.",
     "ownerId": "1281968130402553909",
-    "categoryId": "1304558761725399162",
-    "embedcolour": "red",
-    "logsChannelId": "1304731085988691988"
+    "categoryId": "1310321516725927956",
+    "embedcolour": "#FFFFFF",
+    "logsChannelId": "1310321530944622792"
 }
