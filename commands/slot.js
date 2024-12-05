@@ -32,7 +32,7 @@ module.exports = {
     .setDescription('Creates a slot channel for the specified user.')
     .addUserOption(option => option.setName('user').setDescription('The user to create a slot for').setRequired(true))
     .addStringOption(option => option.setName('slot_name').setDescription('The name of the slot').setRequired(true))
-    .addStringOption(option => 
+    .addStringOption(option =>
       option.setName('duration')
         .setDescription('The duration of the slot')
         .setRequired(true)
@@ -59,25 +59,33 @@ module.exports = {
     const expiryDate = duration === -1 ? -1 : new Date(startDate.getTime() + duration);
     const pingLimits = getPingLimits(duration);
 
-    const permissions = [
-      {
-        id: guild.roles.everyone.id,
-        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.AddReactions],
-        deny: [PermissionsBitField.Flags.SendMessages],
-      },
-      {
-        id: user.id,
-        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
-      },
-      {
-        id: staffRoleId,
-        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
-      },
-      {
-        id: ownerId,
-        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
-      },
-    ];
+const permissions = [
+  {
+    id: guild.roles.everyone.id,
+    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.AddReactions],
+    deny: [PermissionsBitField.Flags.SendMessages],
+  },
+  {
+    id: user.id,
+    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
+  },
+];
+
+const staffRole = guild.roles.cache.get(staffRoleId);
+if (staffRole) {
+  permissions.push({
+    id: staffRole.id,
+    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
+  });
+}
+
+const ownerUser = await guild.members.fetch(ownerId).catch(() => null);
+if (ownerUser) {
+  permissions.push({
+    id: ownerUser.id,
+    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
+  });
+}
 
     try {
       const slotChannel = await guild.channels.create({
@@ -88,7 +96,7 @@ module.exports = {
       });
 
       const userEmbed = new EmbedBuilder()
-        .setTitle(`Slot Channel Created`)
+        .setTitle('Slot Channel Created')
         .setDescription(`A new slot channel has been created for <@${user.id}>`)
         .addFields(
           { name: 'Slot Name', value: slotName, inline: true },
@@ -97,7 +105,7 @@ module.exports = {
           { name: 'Expiry Date', value: duration === -1 ? 'Never' : `<t:${Math.floor(expiryDate.getTime() / 1000)}:F>`, inline: true },
           { name: 'Ping Limits', value: `\`${pingLimits.here} @here pings\`, \`${pingLimits.everyone} @everyone pings\`` }
         )
-        .setColor(embedcolour)
+        .setColor("#FFFFFF")
         .setTimestamp();
 
       const rulesEmbed = new EmbedBuilder()
