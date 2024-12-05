@@ -28,7 +28,7 @@ const deployCommands = async () => {
     console.log('Started refreshing application (/) commands.');
 
     await rest.put(
-      Routes.applicationGuildCommands(clientId, guildId),
+      Routes.applicationGuildCommands("1298827688039026728", guildId),
       { body: commands },
     );
 
